@@ -1,0 +1,9 @@
+version: '3'
+services:
+  message-queue:
+    build: "rabbitmq"
+    volumes:
+      - ${PWD}/rabbitmq.conf /etc/rabbitmq/rabbitmq.conf
+    ports:
+      - 5672:5672
+      - 8282:15672

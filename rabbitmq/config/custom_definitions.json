@@ -1,0 +1,104 @@
+{
+    "rabbit_version": "3.8.3",
+    "rabbitmq_version": "3.8.3",
+    "users": [
+        {
+            "name": "admin",
+            "password_hash": "ZZiLrBJwnZi5WvlJdwoOHFEVfHWE4KIqSvtBc5whwcXQCaiL",
+            "hashing_algorithm": "rabbit_password_hashing_sha256",
+            "tags": "administrator"
+        }
+    ],
+    "vhosts": [
+        {
+            "name": "/"
+        },
+        {
+            "name": "test-vhost"
+        }
+    ],
+    "permissions": [
+        {
+            "user": "admin",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        },
+        {
+            "user": "admin",
+            "vhost": "test-vhost",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+        }
+    ],
+    "topic_permissions": [
+        {
+            "user": "admin",
+            "vhost": "test-vhost",
+            "exchange": "",
+            "write": ".*",
+            "read": ".*"
+        }
+    ],
+    "parameters": [],
+    "global_parameters": [
+        {
+            "name": "cluster_name",
+            "value": "rabbit@rabbitmq-example-server"
+        },
+        {
+            "name": "internal_cluster_id",
+            "value": "rabbitmq-cluster-id-uiQY72El-t7KshK33EgSmA"
+        }
+    ],
+    "policies": [],
+    "queues": [
+        {
+            "name": "webhook",
+            "vhost": "test-vhost",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+            }
+        },
+        {
+            "name": "log",
+            "vhost": "test-vhost",
+            "durable": true,
+            "auto_delete": false,
+            "arguments": {
+            }
+        }
+    ],
+    "exchanges": [
+        {
+            "name": "test-exchange",
+            "vhost": "test-vhost",
+            "type": "fanout",
+            "durable": true,
+            "auto_delete": false,
+            "internal": false,
+            "arguments": {}
+        }
+    ],
+    "bindings": [
+        {
+            "source": "test-exchange",
+            "vhost": "test-vhost",
+            "destination": "webhook",
+            "destination_type": "queue",
+            "routing_key": "",
+            "arguments": {}
+        },
+        {
+            "source": "test-exchange",
+            "vhost": "test-vhost",
+            "destination": "log",
+            "destination_type": "queue",
+            "routing_key": "",
+            "arguments": {}
+        }
+    ]
+  }
